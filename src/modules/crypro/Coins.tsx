@@ -1,4 +1,4 @@
-import {Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {fetchcoins} from './action';
 import {useDispatch} from 'react-redux';
@@ -19,8 +19,14 @@ const Coins = () => {
     );
   }, []);
   return (
-    <View>
+    <View
+      style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1,
+      }}>
       <Text>Coins</Text>
+      <Image source={require('../../assets/add.png')} />
     </View>
   );
 };
