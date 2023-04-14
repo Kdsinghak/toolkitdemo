@@ -1,4 +1,4 @@
-import {Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {fetchcoins} from './action';
 import {useDispatch} from 'react-redux';
@@ -8,11 +8,11 @@ const Coins = () => {
 
   useEffect(() => {
     dispatch(
-      fetchcoins(
-        (onSuccess: any) => {},
-        (onFailure: any) => {},
-      ),
+      fetchcoins(),
+      // (onSuccess: any) => {},
+      // (onFailure: any) => {},
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function onButtonPress(): void {
@@ -22,17 +22,27 @@ const Coins = () => {
     });
   }
   return (
-    <View
-      style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-      }}>
-      <TouchableOpacity onPress={onButtonPress}>
-        <Text>Check for updates</Text>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.button} onPress={onButtonPress}>
+        <Text style={styles.buttontext}>Check for updates</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
 export default Coins;
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  buttontext: {
+    color: 'white',
+  },
+  button: {
+    backgroundColor: 'green',
+    padding: 10,
+    borderRadius: 6,
+  },
+});
