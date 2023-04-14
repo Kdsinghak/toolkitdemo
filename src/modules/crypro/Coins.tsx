@@ -26,7 +26,7 @@ const Coins = () => {
         flex: 1,
       }}>
       <Text>Coins</Text>
-      <Image source={require('../../assets/edit.png')} />
+      <Image source={require('../../assets/delete.png')} />
     </View>
   );
 };
