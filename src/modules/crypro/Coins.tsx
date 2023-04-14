@@ -27,6 +27,7 @@ const Coins = () => {
       }}>
       <Text>Coins</Text>
       <Image source={require('../../assets/delete.png')} />
+      <Text>{'code push integrate sucessfully'}</Text>
     </View>
   );
 };
