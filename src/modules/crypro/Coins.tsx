@@ -1,14 +1,10 @@
-import {Image, Text, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {fetchcoins} from './action';
 import {useDispatch} from 'react-redux';
-
+import codePush from 'react-native-code-push';
 const Coins = () => {
   const dispatch = useDispatch();
-  //   async () => {
-  //     const coinsData = await dispatch(fetchcoins());
-  //     console.log(coinsData);
-  //   };
 
   useEffect(() => {
     dispatch(
@@ -18,6 +14,13 @@ const Coins = () => {
       ),
     );
   }, []);
+
+  function onButtonPress(): void {
+    codePush.sync({
+      updateDialog: true,
+      installMode: codePush.InstallMode.IMMEDIATE, // IMMEDIATE,ON_NEXT_RESTART,ON_NEXT_RESUME,ON_NEXT_SUSPEND
+    });
+  }
   return (
     <View
       style={{
@@ -25,9 +28,9 @@ const Coins = () => {
         alignItems: 'center',
         flex: 1,
       }}>
-      <Text>Coins</Text>
-      <Image source={require('../../assets/delete.png')} />
-      <Text>{'code push integrate sucessfully'}</Text>
+      <TouchableOpacity onPress={onButtonPress}>
+        <Text>Check for updates</Text>
+      </TouchableOpacity>
     </View>
   );
 };
