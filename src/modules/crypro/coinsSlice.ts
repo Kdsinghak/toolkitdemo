@@ -1,4 +1,4 @@
-import {PayloadAction, createSlice} from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 import {coinsList} from '../../modals';
 import {fetchcoins} from './action';
 
@@ -21,14 +21,14 @@ export const coinsdata = createSlice({
     // },
   },
   extraReducers(builder) {
-    builder.addCase(fetchcoins.pending, (state, action) => {
+    builder.addCase(fetchcoins.pending, state => {
       state.status = status.LOADING;
     });
     builder.addCase(fetchcoins.fulfilled, (state, action) => {
       state.status = status.IDLE;
       console.log('actin here ', action);
     });
-    builder.addCase(fetchcoins.rejected, (state, action) => {
+    builder.addCase(fetchcoins.rejected, state => {
       state.status = status.ERROR;
     });
   },

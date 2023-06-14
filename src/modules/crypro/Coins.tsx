@@ -16,10 +16,15 @@ const Coins = () => {
   }, []);
 
   function onButtonPress(): void {
-    codePush.sync({
-      updateDialog: true,
-      installMode: codePush.InstallMode.IMMEDIATE, // IMMEDIATE,ON_NEXT_RESTART,ON_NEXT_RESUME,ON_NEXT_SUSPEND
-    });
+    codePush
+      .sync({
+        updateDialog: true,
+        installMode: codePush.InstallMode.IMMEDIATE, // IMMEDIATE,ON_NEXT_RESTART,ON_NEXT_RESUME,ON_NEXT_SUSPEND
+      })
+      .then(res => console.log(res))
+      .catch(err => {
+        console.log(err);
+      });
   }
   return (
     <View style={styles.container}>
